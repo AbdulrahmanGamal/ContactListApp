@@ -4,7 +4,7 @@
 this app  implements clean architecture and SOLID principles to make code more maintainable and testable and readable
 
 app layers
-- Data layer : which contains webservices , repositories, room local database
+- Data layer : which contains webservices , repositories and room as local database and saving loaded pages 
 - Domain layer : which contains usecases used in the app
 - Presentation layer : contains the app views and view-models
 
