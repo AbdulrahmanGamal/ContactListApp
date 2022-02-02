@@ -16,9 +16,9 @@ This app build with kotlin
 -  **KOIN dependency injection**
    > to provide instances our classes, with the power of kotlin i used  [Koin](https://insert-koin.io)  as a dependency injection library because it's  lightweight dependency injection framework for Kotlin Written in pure Kotlin using functional resolution only:  no code generation!
 
--  **Android Architecture **
+-  **Android Architecture**
    > using ( Flow as a stream and view-model) to implement MVVM Pattern to design robust, testable, and maintainable app with more power over lifecycle management and data persistence.
-   > Pagination is using [Paging3] (https://developer.android.com/topic/libraries/architecture/paging/v3-overview) library 
+   > Pagination is using [Paging3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) library 
 -  **Unit testing**
    > mockito as for mocking and unit test
 
