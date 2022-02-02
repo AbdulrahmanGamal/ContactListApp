@@ -9,6 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.abdulrahman.contactlistapp.R
+import com.abdulrahman.contactlistapp.core.DateUtils
+import com.abdulrahman.contactlistapp.core.MONTH_DAY_YEAR_SLASH_FORMAT
 import com.abdulrahman.contactlistapp.databinding.FragmentItemDetailBinding
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
@@ -42,9 +44,9 @@ class ContactDetailFragment : Fragment(), OnMapReadyCallback {
             .onEach {
                 _binding?.contactName?.text = it.name
                 _binding?.mobile?.text = it.phone
-                _binding?.memberSince?.text = it.registered
+                _binding?.memberSince?.text = DateUtils.formatDate(it.registered,SERVICE_DATE_FORMAT,MONTH_DAY_YEAR_SLASH_FORMAT)
                 _binding?.email?.text = it.email
-                _binding?.dob?.text = it.dob
+                _binding?.dob?.text = DateUtils.formatDate(it.dob,SERVICE_DATE_FORMAT,MONTH_DAY_YEAR_SLASH_FORMAT)
                 _binding?.address?.text =
                     "${it.location.state}  ${it.location.city} , ${it.location.postcode} "
                 _binding?.contactImage?.load(it.picture.large)
@@ -77,6 +79,7 @@ class ContactDetailFragment : Fragment(), OnMapReadyCallback {
 
     companion object {
         const val ARG_ITEM_ID = "item_id"
+        const val SERVICE_DATE_FORMAT="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
     }
 
     override fun onDestroyView() {

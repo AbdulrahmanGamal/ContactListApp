@@ -8,6 +8,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.abdulrahman.contactlistapp.R
 import com.abdulrahman.contactlistapp.data.local.UserDBEntity
 import com.abdulrahman.contactlistapp.databinding.ContactsListItemBinding
@@ -31,7 +32,14 @@ class ContactsAdapter(private val onItemClickListener: (UserDBEntity) -> Unit) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.contactName.text = item?.name
-        holder.contactImage.load(item?.picture?.thumbnail)
+        holder.contactImage.load(item?.picture?.thumbnail) {
+            if (item?.gender == "male") {
+                placeholder(R.drawable.ic_male_avatar)
+            } else {
+                placeholder(R.drawable.ic_female_avatar)
+            }
+            transformations(CircleCropTransformation())
+        }
         with(holder.itemView) {
             setOnClickListener {
                 item?.let { onItemClickListener.invoke(it) }
